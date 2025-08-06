@@ -1,84 +1,84 @@
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  margin: 0;
+  padding: 20px;
   text-align: center;
+  color: #333;
 }
 
 h1 {
-  font-size: 2.5em;
-  color: #fff;
+  font-size: 2.5rem;
   margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
 
 #countdown {
-  font-size: 2em;
-  color: #fff;
-  background: rgba(0,0,0,0.2);
-  padding: 15px 25px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-}
-
-#message {
-  display: none;
-  color: #fff;
-  font-size: 1.5em;
-  margin-top: 30px;
-  max-width: 600px;
-  animation: fadeIn 2s ease-in-out forwards;
-}
-
-.voucher {
-  background: #ffffffaa;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 15px;
-  color: #444;
+  font-size: 2rem;
+  margin-bottom: 30px;
   font-weight: bold;
 }
 
-.balloon {
-  position: absolute;
-  bottom: -100px;
-  width: 60px;
-  height: 80px;
-  background-color: red;
-  border-radius: 30px 30px 30px 30px;
-  animation: floatUp 6s infinite;
-  opacity: 0.7;
+#message {
+  background: white;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-size: 1.2rem;
+  color: #444;
+  animation: fadeIn 2s ease forwards;
 }
 
-@keyframes floatUp {
-  0% { bottom: -100px; opacity: 0.7; }
-  50% { opacity: 1; }
-  100% { bottom: 110%; opacity: 0; }
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+.voucher {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #d35400;
 }
 
 .hidden {
   display: none;
 }
 
-.show {
-  display: block;
+.balloon {
+  position: fixed;
+  bottom: -100px;
+  width: 40px;
+  height: 60px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0.9;
+  animation-name: floatUp;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  z-index: 9999;
 }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2em;
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
   }
-  #countdown {
-    font-size: 1.5em;
+  100% {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
   }
+}
+
+#vale-btn {
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 105, 0, 0.6);
+  transition: background 0.3s ease;
+}
+
+#vale-btn:hover {
+  background: linear-gradient(45deg, #ee0979, #ff6a00);
 }
