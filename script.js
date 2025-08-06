@@ -3,25 +3,29 @@ const message = document.getElementById("message");
 const title = document.getElementById("title");
 
 const targetDate = new Date("2025-08-06T00:00:00");
+let hasLaunched = false; // <- Variable de control
 
 function updateCountdown() {
   const now = new Date();
   const diff = targetDate - now;
 
-  if (diff <= 0) {
+  if (diff <= 0 && !hasLaunched) {
     countdown.style.display = "none";
     title.innerText = "¡Feliz cumpleaños Tina! 🎉";
     message.classList.remove("hidden");
     launchBalloons();
+    hasLaunched = true; // <- Asegura que solo pase una vez
     return;
   }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / 1000 / 60) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
+  if (diff > 0) {
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / 1000 / 60) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
-  countdown.innerText = `${days} días, ${hours}h ${minutes}m ${seconds}s`;
+    countdown.innerText = `${days} días, ${hours}h ${minutes}m ${seconds}s`;
+  }
 }
 
 function launchBalloons() {
