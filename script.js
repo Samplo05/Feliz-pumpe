@@ -1,20 +1,23 @@
 const countdown = document.getElementById("countdown");
 const message = document.getElementById("message");
 const title = document.getElementById("title");
+const valeBtn = document.getElementById("vale-btn");
 
 const targetDate = new Date("2025-08-06T00:00:00");
-let hasLaunched = false; // <- Variable de control
+let hasLaunched = false;
 
 function updateCountdown() {
   const now = new Date();
   const diff = targetDate - now;
 
   if (diff <= 0 && !hasLaunched) {
+    hasLaunched = true;
     countdown.style.display = "none";
-    title.innerText = "¡Feliz cumpleaños Tina! 🎉";
+    title.innerText = "¡Feliz cumpleaños Valen! 🎉";
     message.classList.remove("hidden");
+
     launchBalloons();
-    hasLaunched = true; // <- Asegura que solo pase una vez
+
     return;
   }
 
@@ -29,14 +32,23 @@ function updateCountdown() {
 }
 
 function launchBalloons() {
-  for (let i = 0; i < 20; i++) {
+  const balloonInterval = setInterval(() => {
     const balloon = document.createElement("div");
     balloon.classList.add("balloon");
     balloon.style.left = `${Math.random() * 100}%`;
     balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-    balloon.style.animationDuration = `${3 + Math.random() * 5}s`;
+    balloon.style.animationDuration = `${3 + Math.random() * 2}s`;
     document.body.appendChild(balloon);
-  }
+
+    setTimeout(() => balloon.remove(), 6000);
+  }, 200);
+
+  setTimeout(() => {
+    clearInterval(balloonInterval);
+
+    // Mostrar el botón cuando los globos se detienen
+    valeBtn.classList.remove("hidden");
+  }, 5000);
 }
 
 updateCountdown();
