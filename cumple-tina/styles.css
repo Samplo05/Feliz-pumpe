@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+#countdown {
+  font-size: 2em;
+  color: #fff;
+  background: rgba(0,0,0,0.2);
+  padding: 15px 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+#message {
+  display: none;
+  color: #fff;
+  font-size: 1.5em;
+  margin-top: 30px;
+  max-width: 600px;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.voucher {
+  background: #ffffffaa;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+  color: #444;
+  font-weight: bold;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 60px;
+  height: 80px;
+  background-color: red;
+  border-radius: 30px 30px 30px 30px;
+  animation: floatUp 6s infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0% { bottom: -100px; opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { bottom: 110%; opacity: 0; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+  #countdown {
+    font-size: 1.5em;
+  }
+}
