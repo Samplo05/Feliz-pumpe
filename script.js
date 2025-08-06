@@ -2,9 +2,17 @@ const countdown = document.getElementById("countdown");
 const message = document.getElementById("message");
 const title = document.getElementById("title");
 const valeBtn = document.getElementById("vale-btn");
+const audio = document.getElementById('audio');
+const playMusicBtn = document.getElementById('play-music-btn');
 
-const targetDate = new Date("2025-08-06T00:00:00");
-let hasLaunched = false;
+playMusicBtn.addEventListener('click', () => {
+  audio.play().then(() => {
+    playMusicBtn.style.display = 'none'; // Oculta botón si suena bien
+  }).catch(err => {
+    alert('No se pudo reproducir la música automáticamente. Por favor inténtalo de nuevo.');
+    console.error(err);
+  });
+});
 
 function updateCountdown() {
   const now = new Date();
@@ -13,10 +21,15 @@ function updateCountdown() {
   if (diff <= 0 && !hasLaunched) {
     hasLaunched = true;
     countdown.style.display = "none";
-    title.innerText = "¡Feliz cumpleaños Valen! 🎉";
+    title.innerText = "¡Feliz cumpleaños Tina! 🎉";
     message.classList.remove("hidden");
 
     launchBalloons();
+
+    // Quitamos la auto-reproducción aquí para evitar bloqueos en navegador
+    // audio.play().catch(e => {
+    //   console.log('No se pudo reproducir automáticamente. Espera interacción del usuario.');
+    // });
 
     return;
   }
@@ -50,6 +63,9 @@ function launchBalloons() {
     valeBtn.classList.remove("hidden");
   }, 5000);
 }
+
+const targetDate = new Date("2025-08-06T00:00:00");
+let hasLaunched = false;
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
