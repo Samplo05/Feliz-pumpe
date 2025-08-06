@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cuenta regresiva para Valen</title>
+  <title>Cuenta regresiva para Tina</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <h1 id="title">Cuenta regresiva para el cumple de Valen 🎂</h1>
+  <h1 id="title">Cuenta regresiva para el cumple de Tina 🎂</h1>
   <div id="countdown"></div>
 
   <div id="message" class="hidden">
@@ -22,18 +22,11 @@
   </div>
 
   <button id="vale-btn" class="hidden">Feliz pumpe Vale</button>
+  <button id="play-music-btn">🎵 Presiona para iniciar la música</button>
 
   <script src="script.js"></script>
-  <iframe
-    id="music"
-    width="0"
-    height="0"
-    src="https://www.youtube.com/embed/XPuK7j0hxPE?autoplay=1&loop=1&playlist=XPuK7j0hxPE"
-    title="Yo más te adoro - Morat"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen
-    style="display:none;">
-  </iframe>
+
+  <audio id="audio" src="morat.mp3" preload="auto"></audio>
+
 </body>
 </html>
